@@ -19,6 +19,7 @@
     "@testing-library/dom": "^7.29.4",
     "@testing-library/jest-dom": "^5.11.9",
     "concurrently": "^5.3.0",
+    "cypress": "^6.6.0",
     "electron": "^11.2.2",
     "eslint": "^7.21.0",
     "gazelle-design-tokens": "^2.5.2",
