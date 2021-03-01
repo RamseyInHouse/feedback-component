@@ -1,0 +1,39 @@
+{
+  "name": "feedback-web-component",
+  "version": "1.0.0",
+  "source": "src/index.js",
+  "main": "dist/feedback-component.min.modern.js",
+  "license": "GPL-3.0",
+  "scripts": {
+    "serve": "serve",
+    "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
+    "build:css": "sass src/styles.scss dist/styles.css",
+    "watch:css": "yarn build:css --watch",
+    "build": "yarn build:css && yarn build:js",
+    "dev": "yarn build:css && concurrently \"servfe\" \"yarn watch:css\" \"yarn build:js watch\"",
+    "lint": "eslint ./src",
+    "test": "cypress run --browser chrome --headless",
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "@ramseyinhouse/eslint-config": "^1.0.4",
+    "concurrently": "^6.0.2",
+    "cypress": "^7.1.0",
+    "eslint": "^7.24.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "microbundle": "^0.13.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.11",
+    "serve": "^11.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "!(dist/*).{js,css,json,md}": "prettier ./src --write",
+    "!(dist/*).js": "eslint --fix"
+  }
+}
