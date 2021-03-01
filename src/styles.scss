@@ -1,0 +1,70 @@
+@import "../node_modules/gazelle-design-tokens/sass/index";
+
+.FeedbackBlock {
+  --feedback-block-icon-color: #{$gzl-color-base-gray-60};
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: $gzl-size-font-4;
+  color: $gzl-color-base-gray-60;
+  font-family: canada-type-gibson, Arial, sans-serif;
+
+  ::slotted(*) {
+    display: unset !important;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  &-confirmationContent {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-confirmationMessage {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &-ctaText {
+    margin-right: $gzl-size-spacing-1;
+  }
+
+  &-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &-button {
+    border: 0;
+    background: none;
+    padding: $gzl-size-spacing-half;
+    cursor: pointer;
+
+    i {
+      display: block;
+      background: $gzl-color-base-gray-20;
+      border: 0;
+      border-radius: 50%;
+      padding: $gzl-size-spacing-1;
+      width: $gzl-size-spacing-2;
+      height: $gzl-size-spacing-2;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <feedback-block
+      data-version="2"
+      data-block-name="transaction_map"
+    >
+      <span slot="cta" style="display: none;">Is this section <strong>helpful?</strong></span>
+      <span slot="confirmation" style="display: none;">Thanks for the feedback!</span>
+    </feedback-block>
+
+    <script type="module" src="./dist/feedback-block.min.modern.js"></script>
+
+    <script>
+      document.addEventListener('feedback:interaction', function (e) {
+        console.log(e.detail);
+      });
+    </script>
+  </body>
+</html>
