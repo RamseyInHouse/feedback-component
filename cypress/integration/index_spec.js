@@ -23,13 +23,13 @@ describe("rendering", () => {
             });
     });
 
-    it.only('respects custom slots', () => {
+    it('respects custom slots', () => {
         getShadow('custom-slots')
             .find('.FeedbackBlock-ctaText')
             .should(e => {
                 const [ctaText] = e.get();
-                console.log(ctaText.slots);
-                expect(ctaText.textContent).to.contains('Was this helpful?');
+                const [renderedSlot] = ctaText.querySelector('[name="cta"]').assignedNodes({ flatten: true });
+                expect(renderedSlot.textContent).to.contains('Custom CTA!'); 
             });
     });
 });

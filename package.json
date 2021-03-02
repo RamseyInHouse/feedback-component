@@ -12,7 +12,8 @@
     "build": "yarn build:css && yarn build:js",
     "dev": "yarn build:css && concurrently \"serve\" \"yarn watch:css\" \"yarn build:js watch\"",
     "lint": "eslint ./src",
-    "test": "jest ./src"
+    "test": "jest ./src", 
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@ramseyinhouse/eslint-config": "^1.0.3",
