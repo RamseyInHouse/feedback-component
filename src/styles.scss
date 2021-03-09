@@ -1,13 +1,10 @@
-@import "../node_modules/gazelle-design-tokens/sass/index";
-
 .FeedbackBlock {
-  --feedback-block-icon-color: #{$gzl-color-base-gray-60};
-
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-size: $gzl-size-font-4;
-  color: $gzl-color-base-gray-60;
+  font-size: var(--feedback-block-font-size, 1.125rem);
+  font-weight: var(--feedback-block-font-weight, 400);
+  color: var(--feedback-block-font-color, #69757a);
   font-family: canada-type-gibson, Arial, sans-serif;
 
   ::slotted(*) {
@@ -38,7 +35,7 @@
   }
 
   &-ctaText {
-    margin-right: $gzl-size-spacing-1;
+    margin-right: 1rem;
   }
 
   &-actions {
@@ -49,17 +46,25 @@
   &-button {
     border: 0;
     background: none;
-    padding: $gzl-size-spacing-half;
     cursor: pointer;
+    width: var(--feedback-block-icon-size, 2rem);
+    height: var(--feedback-block-icon-size, 2rem);
+    background: var(--feedback-block-button-background-color, #e8eced);
+    border: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & + & {
+      margin-left: .5rem;
+    }
 
     i {
-      display: block;
-      background: $gzl-color-base-gray-20;
-      border: 0;
-      border-radius: 50%;
-      padding: $gzl-size-spacing-1;
-      width: $gzl-size-spacing-2;
-      height: $gzl-size-spacing-2;
+      display: inherit;
+      width: var(--feedback-block-icon-size, 1rem);
+      height: var(--feedback-block-icon-size, 1rem);
+      color: var(--feedback-block-icon-color, #69757a);
 
       svg {
         width: 100%;
