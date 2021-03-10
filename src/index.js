@@ -51,6 +51,11 @@ class FeedbackComponent extends HTMLElement {
    * @return {void}
    */
   attachMarkup() {
+
+    const template = document.getElementById('feedback-block-defaults');
+    // console.log(template.content.querySelector('[slot="option-icon:2"]').outerHTML);
+    // console.log(template.content);
+
     this.shadow.innerHTML = `
       <div class="FeedbackBlock">
         <div class="FeedbackBlock-content" data-feedback-block-cta>
@@ -66,9 +71,11 @@ class FeedbackComponent extends HTMLElement {
               data-feedback-block-value="1"
               aria-label="thumbs up"
             >
-              <i>
-                ${thumbsUp}
-              </i>
+              <slot name="option-icon:1">
+                <i>
+                  ${!!template.content.querySelector('[slot="option-icon:2"]') ? template.content.querySelector('[slot="option-icon:2"]').outerHTML : thumbsUp}
+                </i>
+              </slot>
             </button>
 
             <button
@@ -76,14 +83,16 @@ class FeedbackComponent extends HTMLElement {
               data-feedback-block-value="0"
               aria-label="thumbs down"
             >
-              <i>
-                ${thumbsDown}
-              </i>
+              <slot name="option-icon:2">
+                <i>${thumbsDown}</i>
+              </slot>
             </button>
           </div>
         </div>
 
-        <div class="FeedbackBlock-content FeedbackBlock-confirmationContent" data-feedback-block-confirmation>
+        <div 
+          class="FeedbackBlock-content FeedbackBlock-confirmationContent" data-feedback-block-confirmation
+        >
           <span class="FeedbackBlock-confirmationMessage">
             <slot name="confirmation">
               Thanks for your feedback!
