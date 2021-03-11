@@ -1,6 +1,6 @@
 import css from "../dist/styles.css";
 import { thumbsUp, thumbsDown } from "./icons";
-
+import options from './options';
 class FeedbackComponent extends HTMLElement {
   connectedCallback() {
     this.shadow = this.attachShadow({ mode: "open" });
@@ -45,17 +45,34 @@ class FeedbackComponent extends HTMLElement {
     );
   }
 
+  renderIcon(iconPosition) {
+    const templateIcon = this.getTemplateContent(`[slot="option-icon:${iconPosition}"]`);
+
+    if (templateIcon) {
+      return templateIcon.outerHTML;
+    }
+
+    // fallback?
+
+    return thumbsUp;
+  }
+
+  getTemplateContent(selector) {
+    const content = document.getElementById('feedback-block-defaults')?.content;
+
+    if (!content) {
+      return null;
+    }
+
+    return content.querySelector(selector);
+  }
+
   /**
    * Build the initial HTML for the component.
    *
    * @return {void}
    */
   attachMarkup() {
-
-    const template = document.getElementById('feedback-block-defaults');
-    // console.log(template.content.querySelector('[slot="option-icon:2"]').outerHTML);
-    // console.log(template.content);
-
     this.shadow.innerHTML = `
       <div class="FeedbackBlock">
         <div class="FeedbackBlock-content" data-feedback-block-cta>
@@ -65,33 +82,14 @@ class FeedbackComponent extends HTMLElement {
             </slot>
           </span>
 
-          <div class="FeedbackBlock-actions">
-            <button
-              class="FeedbackBlock-button"
-              data-feedback-block-value="1"
-              aria-label="thumbs up"
-            >
-              <slot name="option-icon:1">
-                <i>
-                  ${!!template.content.querySelector('[slot="option-icon:2"]') ? template.content.querySelector('[slot="option-icon:2"]').outerHTML : thumbsUp}
-                </i>
-              </slot>
-            </button>
-
-            <button
-              class="FeedbackBlock-button"
-              data-feedback-block-value="0"
-              aria-label="thumbs down"
-            >
-              <slot name="option-icon:2">
-                <i>${thumbsDown}</i>
-              </slot>
-            </button>
-          </div>
+          <ul class="FeedbackBlock-options">
+            ${this.buildOptionMarkup()}
+          </ul>
         </div>
 
         <div 
-          class="FeedbackBlock-content FeedbackBlock-confirmationContent" data-feedback-block-confirmation
+          class="FeedbackBlock-content FeedbackBlock-confirmationContent" 
+          data-feedback-block-confirmation
         >
           <span class="FeedbackBlock-confirmationMessage">
             <slot name="confirmation">
@@ -101,6 +99,26 @@ class FeedbackComponent extends HTMLElement {
         </div>
       </div>
     `;
+  }
+
+  buildOptionMarkup() {
+    return options.reduce((accumulation, option, index) => {
+      return accumulation + `
+        <li class="FeedbackBlock-option">
+          <button
+            class="FeedbackBlock-button"
+            data-feedback-block-value="${option.value}"
+            aria-label="${option.label}"
+          >
+            <slot name="option-icon:${index + 1}">
+              <i>
+                ${option.icon}
+              </i>
+            </slot>
+          </button>
+        </li>
+      `
+    }, "");
   }
 
   /**
@@ -129,6 +147,9 @@ class FeedbackComponent extends HTMLElement {
    * @return { void }
    */
   attachStyles() {
+    // Needed for laying out the option grid.
+    this.style.setProperty("--feedback-block-option-count", options.length);
+
     const styleBlock = document.createElement("style");
     styleBlock.appendChild(document.createTextNode(css));
     this.shadow.prepend(styleBlock);

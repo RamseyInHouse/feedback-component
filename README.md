@@ -86,6 +86,10 @@ As mentioned, when custom data attributes are applied to the component, those ar
 }
 ```
 
+## Customizing Options
+
+
+
 ## Browser Support
 
 This component is only supported by [modern browsers](https://caniuse.com/custom-elementsv1). To prevent it from breaking functionality on older browsers (like Internet Explorer), always load the component's source via a script tag that has a `type="module"` attribute, as noted above.
