@@ -7,6 +7,23 @@ class FeedbackComponent extends HTMLElement {
     this.attachMarkup();
     this.attachListeners();
     this.attachStyles();
+    this.maybeFallBackToTemplateSlots();
+  }
+
+  maybeFallBackToTemplateSlots() {
+    return this.shadowRoot.querySelectorAll('slot').forEach(slot => {
+      if (slot.assignedNodes().length) {
+        return;
+      };
+
+      const templateElement = this.getTemplateContent(`[slot="${slot.name}"]`);
+
+      if (!templateElement) {
+        return;
+      }
+
+      slot.innerHTML = templateElement.outerHTML;
+    });
   }
 
   /**
