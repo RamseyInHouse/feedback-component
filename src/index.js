@@ -62,18 +62,6 @@ class FeedbackComponent extends HTMLElement {
     );
   }
 
-  renderIcon(iconPosition) {
-    const templateIcon = this.getTemplateContent(`[slot="option-icon:${iconPosition}"]`);
-
-    if (templateIcon) {
-      return templateIcon.outerHTML;
-    }
-
-    // fallback?
-
-    return thumbsUp;
-  }
-
   getTemplateContent(selector) {
     const content = document.getElementById('feedback-block-defaults')?.content;
 

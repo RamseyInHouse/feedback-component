@@ -39,6 +39,14 @@ describe("rendering", () => {
                 expect(renderedSlot.textContent).to.contains('Custom thank you!');
             });
     });
+
+    // it.only('uses template slots when they exist', () => {
+    //     document.body.insertAdjacentHTML('afterbegin', `
+    //         <template id="feedback-block-defaults">
+    //             <span slot="cta">Template CTA!</span>
+    //         </template>
+    //     `);
+    // });
 });
 
 describe("event firing", () => {
