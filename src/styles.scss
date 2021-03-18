@@ -2,9 +2,9 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-size: var(--feedback-block-font-size, 1.125rem);
-  font-weight: var(--feedback-block-font-weight, 400);
-  color: var(--feedback-block-font-color, #69757a);
+  font-size: var(--feedback-component-font-size, 1.125rem);
+  font-weight: var(--feedback-component-font-weight, 400);
+  color: var(--feedback-component-font-color, #69757a);
   font-family: canada-type-gibson, Arial, sans-serif;
 
   ::slotted(*) {
@@ -43,7 +43,7 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(var(--feedback-block-option-count), 1fr);
+    grid-template-columns: repeat(var(--feedback-component-option-count), 1fr);
     grid-gap: .75rem;
   }
 
@@ -51,9 +51,9 @@
     border: 0;
     background: none;
     cursor: pointer;
-    width: var(--feedback-block-icon-size, 2rem);
-    height: var(--feedback-block-icon-size, 2rem);
-    background: var(--feedback-block-button-background-color, #e8eced);
+    width: var(--feedback-component-icon-size, 2rem);
+    height: var(--feedback-component-icon-size, 2rem);
+    background: var(--feedback-component-button-background-color, #e8eced);
     border: 0;
     border-radius: 50%;
     display: flex;
@@ -66,9 +66,9 @@
 
     i {
       display: inherit;
-      width: var(--feedback-block-icon-size, 1rem);
-      height: var(--feedback-block-icon-size, 1rem);
-      color: var(--feedback-block-icon-color, #69757a);
+      width: var(--feedback-component-icon-size, 1rem);
+      height: var(--feedback-component-icon-size, 1rem);
+      color: var(--feedback-component-icon-color, #69757a);
 
       svg {
         width: 100%;

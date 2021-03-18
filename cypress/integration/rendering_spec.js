@@ -11,8 +11,8 @@ describe("default rendering", () => {
         cy.getComponentById('default')
             .find('.FeedbackBlock-button')
             .should(e => {
-                expect(e.first().data('feedback-block-value')).to.equal(1);
-                expect(e.last().data('feedback-block-value')).to.equal(0);
+                expect(e.first().data('feedback-component-value')).to.equal(1);
+                expect(e.last().data('feedback-component-value')).to.equal(0);
             });
     });
 });
@@ -52,11 +52,11 @@ describe("fallback template configuration", () => {
 
     it('allows button icons to be overridden', () => {
         cy.getComponentById('template-fallbacks')
-            .find('[data-feedback-block-value="1"]')
+            .find('[data-feedback-component-value="1"]')
             .contains('U')
 
         cy.getComponentById('template-fallbacks')
-            .find('[data-feedback-block-value="2"]')
+            .find('[data-feedback-component-value="2"]')
             .contains('D')
     });
 })

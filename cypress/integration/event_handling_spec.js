@@ -37,7 +37,7 @@ describe("event firing", () => {
         expect(result.value).to.equal(1);
     });
 
-    it("sends base data in event payload", async () => {
+    it.only("sends base data in event payload", async () => {
         const result = await new Cypress.Promise((resolve) => {
             cy.document().then((doc) => {
                 doc.addEventListener('feedback:interaction', function (e) {
@@ -53,7 +53,11 @@ describe("event firing", () => {
 
         expect(result).to.have.property('instance');
         expect(result).to.have.property('value');
-        expect(result.options).to.deep.eq([0, 1]);
+        expect(result.options).to.have.length(2);
+        expect(result.options[0].label).to.equal("thumbs up")
+        expect(result.options[0].value).to.equal(1)
+        expect(result.options[1].label).to.equal("thumbs down");
+        expect(result.options[1].value).to.equal(0)
     });
 
     it("sends data attribute value in event payload", async () => {

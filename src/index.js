@@ -1,8 +1,9 @@
 import css from "../dist/styles.css";
-import { thumbsUp, thumbsDown } from "./icons";
 import options from './options';
+import TemplateConfig from "./TemplateConfig";
 class FeedbackComponent extends HTMLElement {
   connectedCallback() {
+    this.templateConfig = new TemplateConfig();
     this.shadow = this.attachShadow({ mode: "open" });
     this.attachMarkup();
     this.attachListeners();
@@ -16,7 +17,7 @@ class FeedbackComponent extends HTMLElement {
         return;
       };
 
-      const templateElement = this.getTemplateContent(`[slot="${slot.name}"]`);
+      const templateElement = this.templateConfig.getContent(`[slot="${slot.name}"]`);
 
       if (!templateElement) {
         return;
@@ -33,11 +34,11 @@ class FeedbackComponent extends HTMLElement {
    */
   attachListeners() {
     this.shadow
-      .querySelectorAll("[data-feedback-block-value]")
+      .querySelectorAll("[data-feedback-component-value]")
       .forEach((button) => {
         button.addEventListener("click", (e) => {
           const event = this.buildEvent({
-            value: parseInt(e.currentTarget.dataset.feedbackBlockValue, 10),
+            value: parseInt(e.currentTarget.dataset.feedbackComponentValue, 10),
           });
 
           this.dispatchEvent(event);
@@ -53,23 +54,13 @@ class FeedbackComponent extends HTMLElement {
    */
   showConfirmation() {
     Object.assign(
-      this.shadow.querySelector("[data-feedback-block-cta]").style,
+      this.shadow.querySelector("[data-feedback-component-cta]").style,
       { zIndex: "-1", opacity: "0" }
     );
     Object.assign(
-      this.shadow.querySelector("[data-feedback-block-confirmation]").style,
+      this.shadow.querySelector("[data-feedback-component-confirmation]").style,
       { zIndex: "1", opacity: "1" }
     );
-  }
-
-  getTemplateContent(selector) {
-    const content = document.getElementById('feedback-block-defaults')?.content;
-
-    if (!content) {
-      return null;
-    }
-
-    return content.querySelector(selector);
   }
 
   /**
@@ -80,7 +71,7 @@ class FeedbackComponent extends HTMLElement {
   attachMarkup() {
     this.shadow.innerHTML = `
       <div class="FeedbackBlock">
-        <div class="FeedbackBlock-content" data-feedback-block-cta>
+        <div class="FeedbackBlock-content" data-feedback-component-cta>
           <span class="FeedbackBlock-ctaText">
             <slot name="cta">
               Was this helpful?
@@ -94,7 +85,7 @@ class FeedbackComponent extends HTMLElement {
 
         <div 
           class="FeedbackBlock-content FeedbackBlock-confirmationContent" 
-          data-feedback-block-confirmation
+          data-feedback-component-confirmation
         >
           <span class="FeedbackBlock-confirmationMessage">
             <slot name="confirmation">
@@ -112,7 +103,7 @@ class FeedbackComponent extends HTMLElement {
         <li class="FeedbackBlock-option">
           <button
             class="FeedbackBlock-button"
-            data-feedback-block-value="${option.value}"
+            data-feedback-component-value="${option.value}"
             aria-label="${option.label}"
           >
             <slot name="option-icon:${index + 1}">
@@ -136,9 +127,10 @@ class FeedbackComponent extends HTMLElement {
     return new CustomEvent("feedback:interaction", {
       bubbles: true,
       detail: {
+        ...this.templateConfig.getData(),
         ...this.dataset,
         ...data,
-        options: [0, 1],
+        options,
         instance: this,
       },
     });
@@ -153,7 +145,7 @@ class FeedbackComponent extends HTMLElement {
    */
   attachStyles() {
     // Needed for laying out the option grid.
-    this.style.setProperty("--feedback-block-option-count", options.length);
+    this.style.setProperty("--feedback-component-option-count", options.length);
 
     const styleBlock = document.createElement("style");
     styleBlock.appendChild(document.createTextNode(css));
@@ -161,8 +153,8 @@ class FeedbackComponent extends HTMLElement {
   }
 }
 
-if (!window.customElements.get("feedback-block")) {
-  window.customElements.define("feedback-block", FeedbackComponent);
+if (!window.customElements.get("feedback-component")) {
+  window.customElements.define("feedback-component", FeedbackComponent);
 }
 
 export default FeedbackComponent;

@@ -2,11 +2,11 @@
   "name": "feedback-web-component",
   "version": "1.0.0",
   "source": "src/index.js",
-  "main": "dist/feedback-block.min.modern.js",
+  "main": "dist/feedback-component.min.modern.js",
   "license": "private",
   "scripts": {
     "serve": "serve",
-    "build:js": "microbundle --css inline -o dist/feedback-block.min.js",
+    "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
     "build:css": "sass src/styles.scss dist/styles.css",
     "watch:css": "yarn build:css --watch",
     "build": "yarn build:css && yarn build:js",
