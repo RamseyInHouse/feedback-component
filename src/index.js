@@ -106,7 +106,7 @@ class FeedbackComponent extends HTMLElement {
             data-feedback-component-value="${option.value}"
             aria-label="${option.label}"
           >
-            <slot name="option-icon:${index + 1}">
+            <slot name="option-icon:${index}">
               <i>
                 ${option.icon}
               </i>

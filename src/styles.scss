@@ -2,13 +2,17 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-size: var(--feedback-component-font-size, 1.125rem);
-  font-weight: var(--feedback-component-font-weight, 400);
+  font: 
+    normal 
+    normal 
+    var(--feedback-component-font-weight, 400) 
+    var(--feedback-component-font-size, 1.125rem) / normal 
+    var(--feedback-component-font-family, 'Arial, sans-serif');
   color: var(--feedback-component-font-color, #69757a);
-  font-family: canada-type-gibson, Arial, sans-serif;
 
   ::slotted(*) {
     display: unset !important;
+    font: inherit;
   }
 
   &-content {
@@ -51,8 +55,8 @@
     border: 0;
     background: none;
     cursor: pointer;
-    width: var(--feedback-component-icon-size, 2rem);
-    height: var(--feedback-component-icon-size, 2rem);
+    width: var(--feedback-component-button-size, 2rem);
+    height: var(--feedback-component-button-size, 2rem);
     background: var(--feedback-component-button-background-color, #e8eced);
     border: 0;
     border-radius: 50%;

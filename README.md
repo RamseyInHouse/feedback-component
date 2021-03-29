@@ -34,14 +34,14 @@ You can also override the messaging by passing `cta` and `confirmation` slots to
 </feedback-component>
 ```
 
-The icons themselves can also be overridden by specifying `option-icon:ICON_NUMBER` slots: 
+The icons themselves can also be overridden by specifying `option-icon:OPTION_INDEX` slots: 
 
 ```html
 <feedback-component>
-  <span slot="option-icon:1">
+  <span slot="option-icon:0">
     <svg><!-- A custom "thumbs down" icon --></svg>
   </span>
-  <span slot="option-icon:2">
+  <span slot="option-icon:0">
     <svg><!-- A custom "thumbs up" icon --></svg>
   </span>
 </feedback-component>
@@ -128,7 +128,29 @@ If you'd like access to any arbitrary data when feedback is given, data attribut
 }
 ```
 
-# template!
+You can also use a global `<template>` tag to set these attributes. If any local attributes exist on the components themselves, these will be overriden.
+
+```
+<template 
+  id="feedback-component-config" 
+  data-component-label="my component!" 
+  data-version="1.0"
+></template>
+```
+
+## Styling
+
+The component is packaged with base styles, which can be adjusted as seen fit by modifying CSS custom properties: 
+| Syntax      | Description | Default Value |
+| ----------- | ----------- | --------------- |
+| --feedback-component-font-size | Font size for the component's text. |  1.125rem
+| --feedback-component-font-weight | Font weight for the component's text. | 400
+| --feedback-component-font-family | Font family for the component's text. | Arial, sans-serif
+| --feedback-component-font-color | Font color for the component's text. | #69757a
+| --feedback-component-button-size | Width & height of each option button. | 2rem
+| --feedback-component-button-background-color | Background color of each option button. | #e8eced
+| --feedback-component-icon-size | Width & height of each option button. | 1rem
+| --feedback-component-icon-color | Color of the icon within each option button. | #69757a
 
 ## Browser Support
 

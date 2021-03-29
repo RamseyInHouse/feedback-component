@@ -43,7 +43,7 @@ describe("fallback template configuration", () => {
     beforeEach(() => {
         cy.visit('/template-test');
     });
-    
+
     it('allows CTA message to be overridden', () => {
         cy.getComponentById('template-fallbacks')
             .find('.FeedbackBlock-ctaText')
@@ -56,7 +56,7 @@ describe("fallback template configuration", () => {
             .contains('U')
 
         cy.getComponentById('template-fallbacks')
-            .find('[data-feedback-component-value="2"]')
+            .find('[data-feedback-component-value="0"]')
             .contains('D')
     });
 })
