@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: |
+          pwd
+          ls -a
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
@@ -23,6 +26,3 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - run: |
-          pwd
-          ls -a
