@@ -18,6 +18,7 @@ jobs:
           start: yarn serve
           browser: chrome
           headless: true
+          build: npx cypress info
       - uses: actions/setup-node@v1
         with:
           node-version: 14
