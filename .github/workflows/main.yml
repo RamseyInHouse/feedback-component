@@ -12,10 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: |
-          yarn install
-          yarn test
+          # yarn install
+          # yarn test
