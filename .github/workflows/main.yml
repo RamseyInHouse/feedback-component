@@ -4,7 +4,9 @@ on:
   push:
     branches: [develop]
 
-# env:
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
 #   NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
 
 jobs:
@@ -12,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: |
-          pwd
-          ls -a
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
@@ -22,6 +21,8 @@ jobs:
           browser: chrome
           headless: true
           build: npx cypress info
+        env: 
+          DEBUG: 'cypress:*'
       - uses: actions/setup-node@v1
         with:
           node-version: 14
