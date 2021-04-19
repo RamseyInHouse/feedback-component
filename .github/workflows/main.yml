@@ -18,7 +18,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with: 
           start: yarn serve
-          browser: chrome
           headless: true
           build: npx cypress info
         env: 
