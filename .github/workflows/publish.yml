@@ -1,21 +1,21 @@
-name: Publish
+# name: Publish
 
-on:
-  push:
-    branches: [develop]
+# on:
+#   push:
+#     branches: [develop]
 
-env:
-  NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+# env:
+#   NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
-      - run: |
-          # echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          npm run publish
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: 14
+#           registry-url: https://registry.npmjs.org/
+#       - run: |
+#           # echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+#           npm run publish
