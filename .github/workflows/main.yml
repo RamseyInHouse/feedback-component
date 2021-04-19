@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        env:
-          CYPRESS_port: 5000
+        with: 
+          start: yarn serve
       - uses: actions/setup-node@v1
         with:
           node-version: 14
