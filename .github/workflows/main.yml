@@ -11,16 +11,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
           start: yarn serve
           headless: true
           browser: chrome
-          build: npx cypress info
+          # build: npx cypress info
       - uses: actions/setup-node@v1
         with:
           node-version: 14
