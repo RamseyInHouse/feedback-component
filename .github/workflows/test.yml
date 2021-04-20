@@ -1,8 +1,9 @@
-name: Publish
+name: Test
 
 on:
-  push:
-    branches: [develop]
+  pull_request:
+    branches:
+      - main
 
 # env:
 #   ACTIONS_RUNNER_DEBUG: true
@@ -14,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 14
+      #     registry-url: https://registry.npmjs.org/
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
@@ -25,3 +26,6 @@ jobs:
           browser: chrome
           build: yarn build
           start: yarn serve
+      # - run: |
+      #     # echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      #     # npm publsh
