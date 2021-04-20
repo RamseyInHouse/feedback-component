@@ -19,10 +19,8 @@ jobs:
         with: 
           start: yarn serve
           headless: true
+          browser: chrome
           build: npx cypress info
-        env: 
-          DEBUG: 'cypress:*'
-          CYPRESS_REMOTE_DEBUGGING_PORT: 3000
       - uses: actions/setup-node@v1
         with:
           node-version: 14
