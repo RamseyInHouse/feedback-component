@@ -4,14 +4,14 @@ on:
   push:
     branches: [develop]
 
-env:
-  ACTIONS_RUNNER_DEBUG: true
-  ACTIONS_STEP_DEBUG: true
+# env:
+#   ACTIONS_RUNNER_DEBUG: true
+#   ACTIONS_STEP_DEBUG: true
 #   NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v1
       - name: Run Cypress Tests
