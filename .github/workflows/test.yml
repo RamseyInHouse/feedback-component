@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - master
 
 # env:
 #   ACTIONS_RUNNER_DEBUG: true
