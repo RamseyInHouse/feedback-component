@@ -11,17 +11,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
           start: yarn serve
-          headless: true
-          browser: chrome
+          # headless: true
+          # browser: chrome
           # build: npx cypress info
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
