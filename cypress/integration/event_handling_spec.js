@@ -1,5 +1,5 @@
 beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/test')
 });
 
 describe("event firing", () => {

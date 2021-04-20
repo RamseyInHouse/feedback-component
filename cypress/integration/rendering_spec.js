@@ -1,5 +1,5 @@
 beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/test')
 });
 
 describe("default rendering", () => {
@@ -41,7 +41,7 @@ describe("slot configuration", () => {
 
 describe("fallback template configuration", () => {
     beforeEach(() => {
-        cy.visit('/template-test');
+        cy.visit('/test-template');
     });
 
     it('allows CTA message to be overridden', () => {

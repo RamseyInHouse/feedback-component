@@ -6,20 +6,11 @@ on:
       - main
       - master
 
-# env:
-#   ACTIONS_RUNNER_DEBUG: true
-#   ACTIONS_STEP_DEBUG: true
-#   NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 14
-      #     registry-url: https://registry.npmjs.org/
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with: 
@@ -27,6 +18,3 @@ jobs:
           browser: chrome
           build: yarn build
           start: yarn serve
-      # - run: |
-      #     # echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-      #     # npm publsh

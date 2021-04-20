@@ -12,7 +12,7 @@
     "build": "yarn build:css && yarn build:js",
     "dev": "yarn build:css && concurrently \"serve\" \"yarn watch:css\" \"yarn build:js watch\"",
     "lint": "eslint ./src",
-    "test": "cypress run",
+    "test": "yarn serve & wait-on http://localhost:5000 && cypress run",
     "cypress:open": "cypress open"
   },
   "devDependencies": {
