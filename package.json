@@ -3,20 +3,20 @@
   "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/feedback-component.min.modern.js",
-  "license": "private",
+  "license": "GPL-3",
   "scripts": {
     "serve": "serve",
     "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
     "build:css": "sass src/styles.scss dist/styles.css",
     "watch:css": "yarn build:css --watch",
     "build": "yarn build:css && yarn build:js",
-    "dev": "yarn build:css && concurrently \"serve\" \"yarn watch:css\" \"yarn build:js watch\"",
+    "dev": "yarn build:css && concurrently \"servfe\" \"yarn watch:css\" \"yarn build:js watch\"",
     "lint": "eslint ./src",
-    "test": "yarn serve & wait-on http://localhost:5000 && cypress run --browser chrome --headless",
+    "test": "cypress run --browser chrome --headless",
     "cypress:open": "cypress open"
   },
   "devDependencies": {
-    "@ramseyinhouse/eslint-config": "^1.0.3",
+    "@ramseyinhouse/eslint-config": "^1.0.4",
     "concurrently": "^5.3.0",
     "cypress": "^7.1.0",
     "eslint": "^7.21.0",
@@ -25,12 +25,11 @@
     "microbundle": "^0.13.0",
     "prettier": "^2.2.1",
     "sass": "^1.32.5",
-    "serve": "^11.3.2",
-    "wait-on": "^5.2.1"
+    "serve": "^11.3.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn run test --silent --coverage"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
