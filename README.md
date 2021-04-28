@@ -1,47 +1,81 @@
 # Feedback Web Component
 
-This web component is designed to collect quick feedback from fans regarding specific components of a page. To start, it supports capturing feedback as "thumbs up" or "thumbs down," but may be extended to support other mechanisms as well.
-
+A custom element for collecting quick, binary user feedback on specific pieces of a page. 
 ## Usage
+### Basic Usage
 
-### Setup & Configuration
-
-Place the `feedback-block` element on a page and load the script with a `type="module"` attribute applied. By default, the block will render with "Was this helpful?", thumbs icons, and a generic confirmation message displayed after feedback is collected.
+Place the `feedback-component` element on a page and load the script. By default, the block will render with the text "Was this helpful?" along with thumb icons a user can click to indicate positive or negative. After collecting this feedback, a generic "Thanks for your feedback!" message is displayed.
 
 ```html
-<feedback-block></feedback-block>
+<html>
+  <head></head>
+  <body>
+    <feedback-component></feedback-component>
 
-<script type="module" src="./dist/feedback-block.min.modern.js"></script>
+    <script type="module" src="./dist/feedback-component.js"></script>
+  </body>
+</html>
 ```
+
+In order to handle the feedback, set up an event listener to watch for a "feedback:interaction" custom event. You can learn more about that event and what it contains by heading to [Handling Feedback Data](#handling-feedback-data).
+
+### Overriding Content
+
+There are two slot-driven approaches that will allow you to set custom content for your component.
+
+#### Local Slots
 
 You can also override the messaging by passing `cta` and `confirmation` slots to the component:
 
 ```html
-<feedback-block>
-  <span slot="cta">Is this section <strong>helpful?</strong></span>
-  <span slot="confirmation">Thanks for the feedback!</span>
-</feedback-block>
-
-<script type="module" src="./dist/feedback-block.min.modern.js"></script>
+<feedback-component>
+  <span slot="cta">This is a custom CTA message.</span>
+  <span slot="confirmation">This is a custom confirmation message.</span>
+</feedback-component>
 ```
 
-### Passing Through Data
+The icons themselves can also be overridden by specifying `option-icon:OPTION_INDEX` slots: 
+
+```html
+<feedback-component>
+  <span slot="option-icon:0">
+    <svg><!-- A custom "thumbs down" icon --></svg>
+  </span>
+  <span slot="option-icon:0">
+    <svg><!-- A custom "thumbs up" icon --></svg>
+  </span>
+</feedback-component>
+```
+#### Global Template Slots
+
+If you'd like to customize the contents of every feedback component instance in one place, you can do so within a `<template id="feedback-component-config">` element.
+
+```
+<template id="feedback-component-config">
+  <span slot="cta">This is a custom CTA message.</span>
+  <span slot="confirmation">This is a custom confirmation message.</span>
+</template>
+
+<feedback-component></feedback-component>
+<feedback-component></feedback-component>
+<feedback-component></feedback-component>
+```
+
+### Passing Custom Data
 
 Any `data-*` attributes placed on the element will be passed through to the event that is triggered when a user interacts with the component. For example, the data object returned for the markup below will include `blockId` and `version` attributes with respective data. For more on how this payload looks, see [Logging Data](#logging-data) below.
 
 ```html
-<feedback-block
+<feedback-component
   data-block-id="transaction_map"
   data-version="2"
 >
-</feedback-block>
+</feedback-component>
 ```
 
-## Logging Data
+## Handling Feedback Data
 
-### Capturing Interaction Events
-
-By default, the component doesn't log to anything to external services. Instead, it sends a custom `feedback:interaction` event to which the consuming application can listen and handle as appropriate.
+By default, the component doesn't communicate with any external services. Instead, it sends a custom `feedback:interaction` event to which the consuming application can listen and handle as appropriate. The `detail` property of that event will contain the value of the feedback, as well as other useful information.
 
 ```javascript
 document.addEventListener('feedback:interaction', function (e) {
@@ -56,35 +90,67 @@ The `detail` attribute of the `feedback:interaction` event will contain an objec
 #### `value` (number)
 
 The numerical value of of the interaction. This can be handled as needed by the consuming application. For example, specific integers could be mapped to other values (like strings) to be sent to a data logging service.
-#### `shadowRoot` (DocumentFragment)
+#### `instance` (`feedback-block`)
 
-The `DocumentFragment` of the element. This may be useful if you need access to the markup rendered by the component whenever an interaction is made.
+The instance of the element. This may be useful if you need access to the markup rendered by the component whenever an interaction is made, or for any other potential need.
 
 #### `options` (array)
 
-An array of all the possible values from which a user could choose. In the future, consuming applications may find this useful when the value is only meaningful when in a certain context of other options. For example, a `3` is strong, positive feedback if there are only three options, but if there are ten, it isn't.
+An array of all the the possible options from which a user could choose. Each option is structured as such:
 
 ```javascript
 {
-  value: 1,
-  options: [0, 1],
-  shadowRoot: DocumentFragment
+  label: "thumbs up", 
+  icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+  </svg>`,
+  value: 1
 }
 ```
 
-#### Custom Attributes
+### Passing Custom Data
 
-As mentioned, when custom data attributes are applied to the component, those are passed through to this object as well. Using the [example given above](#passing-through-data), the full `event.detail` object would look something like this:
+If you'd like access to any arbitrary data when feedback is given, data attributes can be attached to the element. They'll be automatically made available within the `event.detail` object. For example, this markup... 
+
+```html
+<feedback-component data-component-label="my component!" data-version="1.0"></feedback-component>
+```
+
+...would yield the following `event.detail` object: 
 
 ```javascript
 {
-  version: "2",
-  blockId: "transaction_map",
+  version: "1.0",
+  componentLabel: "my component!",
   value: 1,
-  options: [0, 1],
-  shadowRoot: DocumentFragment
+  options: [OptionObject, OptionObject],
+  instance: FeedbackComponent
 }
 ```
+
+You can also use a global `<template>` tag to set these attributes. If any local attributes exist on the components themselves, these will be overriden.
+
+```
+<template 
+  id="feedback-component-config" 
+  data-component-label="my component!" 
+  data-version="1.0"
+></template>
+```
+
+## Styling
+
+The component is packaged with base styles, which can be adjusted as seen fit by modifying CSS custom properties: 
+| Syntax      | Description | Default Value |
+| ----------- | ----------- | --------------- |
+| --feedback-component-font-size | Font size for the component's text. |  1.125rem
+| --feedback-component-font-weight | Font weight for the component's text. | 400
+| --feedback-component-font-family | Font family for the component's text. | Arial, sans-serif
+| --feedback-component-font-color | Font color for the component's text. | #69757a
+| --feedback-component-button-size | Width & height of each option button. | 2rem
+| --feedback-component-button-background-color | Background color of each option button. | #e8eced
+| --feedback-component-icon-size | Width & height of each option button. | 1rem
+| --feedback-component-icon-color | Color of the icon within each option button. | #69757a
 
 ## Browser Support
 

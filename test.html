@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+
+      }
+
+      :root {
+        --feedback-component-font-size: 18px;
+        --feedback-component-font-family: Brush Script MT;
+      }
+    </style>
+  </head>
+  <body>
+    <feedback-component id="default"></feedback-component>
+
+    <br>
+    <br>
+
+    <feedback-component id="custom-slots">
+      <span slot="cta">Custom CTA!</span>
+      <span slot="confirmation">Custom thank you!</span>
+    </feedback-component>
+
+    <br>
+    <br>
+
+    <feedback-component 
+      id="custom-data"
+      data-something="some value!" 
+      data-something-else="some other value!"
+    ></feedback-component>
+    
+    <script type="module" src="./dist/feedback-component.min.modern.js"></script>
+  </body>
+</html>

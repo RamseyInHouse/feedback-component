@@ -1,17 +1,18 @@
-@import "../node_modules/gazelle-design-tokens/sass/index";
-
 .FeedbackBlock {
-  --feedback-block-icon-color: #{$gzl-color-base-gray-60};
-
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-size: $gzl-size-font-4;
-  color: $gzl-color-base-gray-60;
-  font-family: canada-type-gibson, Arial, sans-serif;
+  font: 
+    normal 
+    normal 
+    var(--feedback-component-font-weight, 400) 
+    var(--feedback-component-font-size, 1.125rem) / normal 
+    var(--feedback-component-font-family, 'Arial, sans-serif');
+  color: var(--feedback-component-font-color, #69757a);
 
   ::slotted(*) {
     display: unset !important;
+    font: inherit;
   }
 
   &-content {
@@ -38,28 +39,40 @@
   }
 
   &-ctaText {
-    margin-right: $gzl-size-spacing-1;
+    margin-right: 1rem;
   }
 
-  &-actions {
+  &-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(var(--feedback-component-option-count), 1fr);
+    grid-gap: .75rem;
   }
 
   &-button {
     border: 0;
     background: none;
-    padding: $gzl-size-spacing-half;
     cursor: pointer;
+    width: var(--feedback-component-button-size, 2rem);
+    height: var(--feedback-component-button-size, 2rem);
+    background: var(--feedback-component-button-background-color, #e8eced);
+    border: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & + & {
+      margin-left: .5rem;
+    }
 
     i {
-      display: block;
-      background: $gzl-color-base-gray-20;
-      border: 0;
-      border-radius: 50%;
-      padding: $gzl-size-spacing-1;
-      width: $gzl-size-spacing-2;
-      height: $gzl-size-spacing-2;
+      display: inherit;
+      width: var(--feedback-component-icon-size, 1rem);
+      height: var(--feedback-component-icon-size, 1rem);
+      color: var(--feedback-component-icon-color, #69757a);
 
       svg {
         width: 100%;
