@@ -1,0 +1,30 @@
+name: Publish
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+          scope: '@ramseyinhouse'
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - run: yarn install
+      - run: |
+          yarn build
+
+          # if yarn publish --access public; then
+            PACKAGE_VERSION=$(grep version package.json | cut -c 15- | rev | cut -c 3- | rev)
+            git tag -a v$PACKAGE_VERSION -m "Create release v$PACKAGE_VERSION."
+            git push --tags
+
+            echo v$PACKAGE_VERSION
+          # fi
+        env:
+          NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
