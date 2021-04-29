@@ -22,6 +22,11 @@ jobs:
 
           # if yarn publish --access public; then
             PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+            # git config user.name "RamseyInHouse Open Source"
+            # git config user.email "opensource@ramseysolutions.com"
+            git config user.name "Alex MacArthur"
+            git config user.email "alex@macarthur.me"
             git tag -a v$PACKAGE_VERSION -m "Create release v$PACKAGE_VERSION."
             git push --tags
 
@@ -29,3 +34,6 @@ jobs:
           # fi
         env:
           NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+
+
+set user name to oss email
