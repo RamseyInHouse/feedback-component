@@ -34,6 +34,3 @@ jobs:
           # fi
         env:
           NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
-
-
-set user name to oss email
