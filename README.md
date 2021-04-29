@@ -155,3 +155,7 @@ The component is packaged with base styles, which can be adjusted as seen fit by
 ## Browser Support
 
 This component is only supported by [modern browsers](https://caniuse.com/custom-elementsv1). To prevent it from breaking functionality on older browsers (like Internet Explorer), always load the component's source via a script tag that has a `type="module"` attribute, as noted above.
+
+## New Releases
+
+Fork this repository and make a pull request with your change. In a separate commit, please make the appropriate [SemVer](https://semver.org/) version bump in the `package.json` file. Once approved and merged, a new release will be published to npm automatically. 
