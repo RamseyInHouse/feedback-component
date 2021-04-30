@@ -1,6 +1,6 @@
 {
   "name": "feedback-web-component",
-  "version": "1.0.01",
+  "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/feedback-component.min.modern.js",
   "license": "GPL-3.0",
