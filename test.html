@@ -3,34 +3,19 @@
   <head>
     <style>
       * {
-
+        font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
       }
 
       :root {
         --feedback-component-font-size: 18px;
-        --feedback-component-font-family: Brush Script MT;
       }
     </style>
   </head>
-  <body>
+  <body style="padding: 20rem">
     <feedback-component id="default"></feedback-component>
 
     <br>
     <br>
-
-    <feedback-component id="custom-slots">
-      <span slot="cta">Custom CTA!</span>
-      <span slot="confirmation">Custom thank you!</span>
-    </feedback-component>
-
-    <br>
-    <br>
-
-    <feedback-component 
-      id="custom-data"
-      data-something="some value!" 
-      data-something-else="some other value!"
-    ></feedback-component>
     
     <script type="module" src="./dist/feedback-component.min.modern.js"></script>
   </body>

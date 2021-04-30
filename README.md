@@ -1,6 +1,11 @@
 # Feedback Web Component
 
 A custom element for collecting quick, binary user feedback on specific pieces of a page. 
+
+<p align="center">
+  <img src="./demo.gif" alt="" />
+</p>
+
 ## Usage
 ### Basic Usage
 

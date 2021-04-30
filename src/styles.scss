@@ -7,7 +7,7 @@
     normal 
     var(--feedback-component-font-weight, 400) 
     var(--feedback-component-font-size, 1.125rem) / normal 
-    var(--feedback-component-font-family, 'Arial, sans-serif');
+    var(--feedback-component-font-family, inherit);
   color: var(--feedback-component-font-color, #69757a);
 
   ::slotted(*) {

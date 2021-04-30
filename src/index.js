@@ -141,7 +141,7 @@ class FeedbackComponent extends HTMLElement {
    *
    * https://css-tricks.com/styling-a-web-component/
    *
-   * @return { void }
+   * @return {void}
    */
   attachStyles() {
     // Needed for laying out the option grid.
