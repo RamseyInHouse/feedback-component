@@ -164,3 +164,7 @@ This component is only supported by [modern browsers](https://caniuse.com/custom
 ## New Releases
 
 Fork this repository and make a pull request with your change. In a separate commit, please make the appropriate [SemVer](https://semver.org/) version bump in the `package.json` file. Once approved and merged, a new release will be published to npm automatically. 
+
+## Attribution
+
+**Icons** - Base icons came from [Heroicons](https://heroicons.com/).
