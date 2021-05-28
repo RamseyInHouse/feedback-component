@@ -1,5 +1,5 @@
 import css from "../dist/styles.css";
-import options from './options';
+import options from "./options";
 import TemplateConfig from "./TemplateConfig";
 class FeedbackComponent extends HTMLElement {
   connectedCallback() {
@@ -12,12 +12,14 @@ class FeedbackComponent extends HTMLElement {
   }
 
   maybeFallBackToTemplateSlots() {
-    return this.shadowRoot.querySelectorAll('slot').forEach(slot => {
+    return this.shadowRoot.querySelectorAll("slot").forEach((slot) => {
       if (slot.assignedNodes().length) {
         return;
-      };
+      }
 
-      const templateElement = this.templateConfig.getContent(`[slot="${slot.name}"]`);
+      const templateElement = this.templateConfig.getContent(
+        `[slot="${slot.name}"]`
+      );
 
       if (!templateElement) {
         return;
@@ -83,8 +85,8 @@ class FeedbackComponent extends HTMLElement {
           </ul>
         </div>
 
-        <div 
-          class="FeedbackBlock-content FeedbackBlock-confirmationContent" 
+        <div
+          class="FeedbackBlock-content FeedbackBlock-confirmationContent"
           data-feedback-component-confirmation
         >
           <span class="FeedbackBlock-confirmationMessage">
@@ -99,7 +101,9 @@ class FeedbackComponent extends HTMLElement {
 
   buildOptionMarkup() {
     return options.reduce((accumulation, option, index) => {
-      return accumulation + `
+      return (
+        accumulation +
+        `
         <li class="FeedbackBlock-option">
           <button
             class="FeedbackBlock-button"
@@ -114,6 +118,7 @@ class FeedbackComponent extends HTMLElement {
           </button>
         </li>
       `
+      );
     }, "");
   }
 

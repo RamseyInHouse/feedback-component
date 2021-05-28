@@ -1,22 +1,32 @@
 {
-  "name": "feedback-web-component",
+  "name": "@ramseyinhouse/feedback-component",
+  "description": "A native web component for collecting quick user feedback.",
   "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/feedback-component.min.modern.js",
   "license": "GPL-3.0",
+  "author": "Ramsey Solutions",
+  "contributors": [
+    "Alex MacArthur <alex.macarthur@ramseysolutions.com> (https://ramseyinhouse.com/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramseyinhouse/feedback-component"
+  },
   "scripts": {
-    "serve": "serve",
+    "serve": "yarn build && serve",
     "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
     "build:css": "sass src/styles.scss dist/styles.css",
     "watch:css": "yarn build:css --watch",
     "build": "yarn build:css && yarn build:js",
-    "dev": "yarn build:css && concurrently \"servfe\" \"yarn watch:css\" \"yarn build:js watch\"",
+    "dev": "yarn build:css && concurrently \"serve\" \"yarn watch:css\" \"yarn build:js watch\"",
     "lint": "eslint ./src",
     "test": "cypress run --browser chrome --headless",
     "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@ramseyinhouse/eslint-config": "^1.0.4",
+    "@ramseyinhouse/stylelint-config": "^1.1.0",
     "concurrently": "^6.0.2",
     "cypress": "^7.1.0",
     "eslint": "^7.24.0",
@@ -25,7 +35,8 @@
     "microbundle": "^0.13.0",
     "prettier": "^2.2.1",
     "sass": "^1.32.11",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "stylelint": "^13.13.1"
   },
   "husky": {
     "hooks": {

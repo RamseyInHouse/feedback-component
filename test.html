@@ -3,7 +3,8 @@
   <head>
     <style>
       * {
-        font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
       }
 
       :root {
@@ -14,9 +15,17 @@
   <body style="padding: 20rem">
     <feedback-component id="default"></feedback-component>
 
-    <br>
-    <br>
-    
-    <script type="module" src="./dist/feedback-component.min.modern.js"></script>
+    <br />
+    <br />
+
+    <feedback-component id="custom-slots">
+      <span slot="cta">Custom CTA!</span>
+      <span slot="confirmation">Custom thank you!</span>
+    </feedback-component>
+
+    <script
+      type="module"
+      src="./dist/feedback-component.min.modern.js"
+    ></script>
   </body>
 </html>
