@@ -1,10 +1,18 @@
 # Feedback Web Component
 
+[![npm version](https://badge.fury.io/js/%40ramseyinhouse%2Ffeedback-component.svg)](https://badge.fury.io/js/%40ramseyinhouse%2Ffeedback-component)
+
 A custom element for collecting quick, binary user feedback on specific pieces of a page.
 
 <p align="center">
   <img src="./demo.gif" alt="" />
 </p>
+
+## Installation
+
+```bash
+npm install @ramseyinhouse/feedback-component
+```
 
 ## Usage
 
