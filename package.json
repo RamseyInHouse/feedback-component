@@ -14,7 +14,7 @@
     "url": "https://github.com/ramseyinhouse/feedback-component"
   },
   "scripts": {
-    "serve": "serve",
+    "serve": "yarn build && serve",
     "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
     "build:css": "sass src/styles.scss dist/styles.css",
     "watch:css": "yarn build:css --watch",

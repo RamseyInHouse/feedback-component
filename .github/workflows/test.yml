@@ -15,5 +15,4 @@ jobs:
         with:
           headless: true
           browser: chrome
-          build: yarn build
           start: yarn serve
