@@ -1,14 +1,11 @@
 .FeedbackBlock {
-  position: relative;
   display: inline-flex;
+  position: relative;
   align-items: center;
-  font: 
-    normal 
-    normal 
-    var(--feedback-component-font-weight, 400) 
-    var(--feedback-component-font-size, 1.125rem) / normal 
-    var(--feedback-component-font-family, inherit);
   color: var(--feedback-component-font-color, #69757a);
+  font: normal normal var(--feedback-component-font-weight, 400)
+    var(--feedback-component-font-size, 1.125rem) / normal
+    var(--feedback-component-font-family, inherit);
 
   ::slotted(*) {
     display: unset !important;
@@ -18,16 +15,16 @@
   &-content {
     display: flex;
     align-items: center;
-    text-align: center;
     width: 100%;
+    text-align: center;
   }
 
   &-confirmationContent {
     position: absolute;
-    opacity: 0;
-    z-index: -1;
     top: 0;
     left: 0;
+    opacity: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
   }
@@ -43,29 +40,29 @@
   }
 
   &-options {
-    list-style: none;
+    display: grid;
     margin: 0;
     padding: 0;
-    display: grid;
+    list-style: none;
     grid-template-columns: repeat(var(--feedback-component-option-count), 1fr);
-    grid-gap: .75rem;
+    grid-gap: 0.75rem;
   }
 
   &-button {
-    border: 0;
-    background: none;
-    cursor: pointer;
-    width: var(--feedback-component-button-size, 2rem);
-    height: var(--feedback-component-button-size, 2rem);
-    background: var(--feedback-component-button-background-color, #e8eced);
-    border: 0;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    background: var(--feedback-component-button-background-color, #e8eced);
+    cursor: pointer;
+    width: var(--feedback-component-button-size, 2rem);
+    height: var(--feedback-component-button-size, 2rem);
 
     & + & {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
     i {
