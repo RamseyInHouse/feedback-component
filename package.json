@@ -1,7 +1,7 @@
 {
   "name": "@ramseyinhouse/feedback-component",
   "description": "A native web component for collecting quick user feedback.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source": "src/index.js",
   "main": "dist/feedback-component.min.modern.js",
   "license": "GPL-3.0",
