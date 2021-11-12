@@ -159,14 +159,17 @@ You can also use a global `<template>` tag to set these attributes. If any local
 The component is packaged with base styles, which can be adjusted as seen fit by modifying CSS custom properties:
 | Syntax | Description | Default Value |
 | ----------- | ----------- | --------------- |
-| `--feedback-component-font-size` | Font size for the component's text. | 1.125rem
-| `--feedback-component-font-weight` | Font weight for the component's text. | 400
-| `--feedback-component-font-family` | Font family for the component's text. | Arial, sans-serif
-| `--feedback-component-font-color` | Font color for the component's text. | #69757a
-| `--feedback-component-button-size` | Width & height of each option button. | 2rem
 | `--feedback-component-button-background-color` | Background color of each option button. | #e8eced
-| `--feedback-component-icon-size` | Width & height of each option button. | 1rem
+| `--feedback-component-button-size` | Width & height of each option button. | 2rem
 | `--feedback-component-icon-color` | Color of the icon within each option button. | #69757a
+| `--feedback-component-icon-size` | Width & height of each option button. | 1rem
+| `--feedback-component-font-color` | Font color for the component's text. | #69757a
+| `--feedback-component-font-family` | Font family for the component's text. | Arial, sans-serif
+| `--feedback-component-font-size` | Font size for the component's text. | 1.125rem
+| `--feedback-component-font-style` | Font style for the component's text. | normal
+| `--feedback-component-font-variant` | Font variant for the component's text. | normal
+| `--feedback-component-font-weight` | Font weight for the component's text. | 400
+| `--feedback-component-line-height` | Line height for the component's text. | normal
 
 ## Browser Support
 

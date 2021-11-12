@@ -3,9 +3,12 @@
   position: relative;
   align-items: center;
   color: var(--feedback-component-font-color, #69757a);
-  font: normal normal var(--feedback-component-font-weight, 400)
-    var(--feedback-component-font-size, 1.125rem) / normal
-    var(--feedback-component-font-family, inherit);
+  font-style: var(--feedback-component-font-style, normal);
+  font-variant: var(--feedback-component-font-variant, normal);
+  font-weight: var(--feedback-component-font-weight, normal);
+  font-size: var(--feedback-component-font-size, 1.125rem);
+  line-height: var(--feedback-component-line-height, normal);
+  font-family: var(--feedback-component-font-family, inherit);
 
   ::slotted(*) {
     display: unset !important;
