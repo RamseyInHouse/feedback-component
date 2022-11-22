@@ -1,4 +1,4 @@
-import css from "../dist/styles.css";
+import css from "./styles.scss?inline";
 import options from "./options";
 import TemplateConfig from "./TemplateConfig";
 class FeedbackComponent extends HTMLElement {
