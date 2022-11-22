@@ -14,7 +14,7 @@
     "url": "https://github.com/ramseyinhouse/feedback-component"
   },
   "scripts": {
-    "serve": "yarn build && serve -p 5000",
+    "serve": "yarn build && serve",
     "build:js": "microbundle --css inline -o dist/feedback-component.min.js",
     "build:css": "sass src/styles.scss dist/styles.css",
     "watch:css": "yarn build:css --watch",
@@ -26,17 +26,17 @@
   },
   "devDependencies": {
     "@ramseyinhouse/eslint-config": "^1.0.4",
-    "@ramseyinhouse/stylelint-config": "^1.1.0",
-    "concurrently": "^6.4.0",
-    "cypress": "^9.1.1",
-    "eslint": "^8.4.1",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
-    "microbundle": "^0.14.2",
-    "prettier": "^2.5.1",
-    "sass": "^1.44.0",
-    "serve": "^13.0.2",
-    "stylelint": "^14.1.0"
+    "@ramseyinhouse/stylelint-config": "^2.0.0",
+    "concurrently": "^7.6.0",
+    "cypress": "^11.1.0",
+    "eslint": "^8.28.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "microbundle": "^0.15.1",
+    "prettier": "^2.7.1",
+    "sass": "^1.56.1",
+    "serve": "^14.1.2",
+    "stylelint": "^14.15.0"
   },
   "husky": {
     "hooks": {

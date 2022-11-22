@@ -1,6 +1,0 @@
-{
-  "baseUrl": "http://localhost:5000",
-  "includeShadowDom": true,
-  "video": false,
-  "defaultCommandTimeout": 10000
-}
