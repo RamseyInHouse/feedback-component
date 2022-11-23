@@ -1,7 +1,7 @@
 {
   "name": "@ramseyinhouse/feedback-component",
   "description": "A native web component for collecting quick user feedback.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "license": "GPL-3.0",
